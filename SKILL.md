@@ -3,8 +3,8 @@ name: knowledge-sync
 description: >
   会话结束后对项目文档和 AGENTS.md 进行严格审查与同步，确保 AGENTS.md、README.md、docs/
   和 .cursor/rules/ 与代码事实一致。适用于 Cursor 和 VSCode AI 工作流，并以 AGENTS.md
-  作为项目通用 AI 记忆和指令入口。用户说以下内容时使用：
-  "sync up", "tidy up docs", "update memory", "clean up docs", "/sync", "/neat", "同步一下",
+  作为项目通用 AI 记忆和指令入口。只有输入 `/myai` 时才视为本 Skill 的命令触发，并必须执行下方完整执行流程。
+  用户说以下内容时也使用："sync up", "tidy up docs", "update memory", "clean up docs", "/myai", "同步一下",
   "整理文档", "整理一下", "更新记忆", "梳理一下", "收尾", "这个阶段做完了",
   "新人能直接上手"，或任何表示阶段收尾、文档同步、知识整理、交接给同事或其他 AI 的表达。
   当用户报告文档过期、AGENTS.md 与 docs 冲突、需要清理项目 AI 记忆时也应使用。
@@ -14,7 +14,7 @@ description: >
 
 # Knowledge Sync
 
-> **Cursor / VSCode AI Skill** — 以 `AGENTS.md` 作为项目通用 AI 指令入口。
+> **Cursor / VSCode AI Skill** — 以 `AGENTS.md` 作为项目通用 AI 指令入口。用户输入 **`/myai`** 即触发本 Skill，必须按下方「执行流程」从头到尾做完；**`/sync`、`/neat`、`/mai` 不属于本 Skill 的命令触发词**。
 
 你是一个**知识库编辑**，不是记录员。记录员只会往后追加，编辑会审查全局、合并重复、修正过期、删除废弃。你的工作是让整个项目的知识体系始终保持**干净、准确、对新人友好**的状态。
 
@@ -78,6 +78,8 @@ description: >
 聊天记录不能直接覆盖代码事实。无法确认时列入「未处理」，不要猜。
 
 ## 执行流程
+
+**`/myai` 触发**：用户仅发送 `/myai` 或消息以 `/myai` 开头时，也必须从第一步执行到第五步，不得省略；最后按第五步模板给出摘要。不要把 `/sync`、`/neat`、`/mai` 视为本 Skill 的命令触发。
 
 ### 第一步：盘点现状（强制机械式枚举，不能跳过）
 
