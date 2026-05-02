@@ -38,7 +38,7 @@ VSCode Copilot 使用 `.github/copilot-instructions.md` 承载默认行为规则
 ## 使用建议
 
 - **项目根优先维护 `AGENTS.md`**，作为 Cursor 和 VSCode Copilot 的唯一项目 AI 记忆入口
-- Cursor 的 `/myai` 入口放 `.cursor/skills/knowledge-sync/SKILL.md`
+- Cursor 的 `/myai` 入口放 `.cursor/skills/myai/SKILL.md`
 - Cursor 专属配置放 `.cursor/rules/`，只保留规则触发、文件匹配或工具约束；通用项目记忆仍写 `AGENTS.md`
 - Copilot 的 `/myai` 入口放 `.github/prompts/myai.prompt.md`
 - Copilot 专属配置放 `.github/copilot-instructions.md`，只保留 Copilot 的默认行为规则；通用项目记忆仍写 `AGENTS.md`

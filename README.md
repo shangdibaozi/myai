@@ -7,7 +7,7 @@
 ## 仓库内容
 
 - `SKILL.md`：`/myai` 的主执行流程源码。用于阶段收尾时同步 `AGENTS.md`、README、docs 和工具专属配置。
-- `.cursor/skills/knowledge-sync/SKILL.md`：给 Cursor 使用的标准 skill 入口。
+- `.cursor/skills/myai/SKILL.md`：给 Cursor 使用的标准 skill 入口。
 - `.cursor/rules/myai-core.mdc`：Cursor 的 `alwaysApply` 基础行为规则。用于日常编码时限制 AI 乱猜、过度设计、顺手乱改。
 - `.github/copilot-instructions.md`：VSCode Copilot 的基础行为规则。和 Cursor 规则保持同一套核心原则。
 - `.github/prompts/myai.prompt.md`：给 VSCode Copilot 使用的 `/myai` prompt file。
@@ -20,7 +20,7 @@
 1. 平时编码时，让 Cursor 读取 `.cursor/rules/myai-core.mdc`，让 VSCode Copilot 读取 `.github/copilot-instructions.md`。
 2. 项目级长期事实、命令、约定、坑点统一维护在 `AGENTS.md`。
 3. 人类和下游系统要看的完整说明写在 `README.md` 和 `docs/`。
-4. 在 Cursor 中通过 `.cursor/skills/knowledge-sync/SKILL.md` 使用 `/myai`。
+4. 在 Cursor 中通过 `.cursor/skills/myai/SKILL.md` 使用 `/myai`。
 5. 在 VSCode Copilot 中通过 `.github/prompts/myai.prompt.md` 使用 `/myai`。
 
 ## 核心约定
@@ -35,7 +35,7 @@
 如果你把这套内容复制到其他仓库，最少带上这三样：
 
 - `SKILL.md`
-- `.cursor/skills/knowledge-sync/SKILL.md`
+- `.cursor/skills/myai/SKILL.md`
 - `.cursor/rules/myai-core.mdc`
 - `.github/copilot-instructions.md`
 - `.github/prompts/myai.prompt.md`

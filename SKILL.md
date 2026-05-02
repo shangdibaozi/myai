@@ -1,5 +1,5 @@
 ---
-name: knowledge-sync
+name: myai
 description: >
   会话结束后对项目文档和 AGENTS.md 进行严格审查与同步，确保 AGENTS.md、README.md、docs/、
   .cursor/rules/ 和 .github/copilot-instructions.md 与代码事实一致。适用于 Cursor 和 VSCode Copilot 工作流，并以 AGENTS.md
@@ -10,6 +10,7 @@ description: >
   当用户报告文档过期、AGENTS.md 与 docs 冲突、需要清理项目 AI 记忆时也应使用。
   裸的"整理"或"tidy"只有在存在明确开发上下文且用户是在结束一个阶段时才触发。
   新增或更新项目文档默认使用中文。
+disable-model-invocation: true
 ---
 
 # Knowledge Sync
@@ -56,7 +57,7 @@ description: >
 如果这个仓库本身存在以下文件，也要把它们视作这套方法的一部分：
 
 - `SKILL.md`：主流程源码，作为这套方法的单一真相来源
-- `.cursor/skills/knowledge-sync/SKILL.md`：Cursor 的标准 skill 入口
+- `.cursor/skills/myai/SKILL.md`：Cursor 的标准 skill 入口
 - `README.md`：仓库入口说明，告诉人和 AI 这套工作流怎么用
 - `.cursor/rules/myai-core.mdc`：`alwaysApply` 的基础行为规则，约束日常编码时的默认行为
 - `.github/copilot-instructions.md`：VSCode Copilot 的默认行为规则，和 Cursor 规则共享同一套核心原则

@@ -1,5 +1,5 @@
 ---
-name: knowledge-sync
+name: myai
 description: >
   会话结束后对项目文档和 AGENTS.md 进行严格审查与同步，确保 AGENTS.md、README.md、docs/、
   .cursor/rules/ 和 .github/copilot-instructions.md 与代码事实一致。适用于 Cursor 和 VSCode Copilot 工作流，并以 AGENTS.md
@@ -10,6 +10,7 @@ description: >
   当用户报告文档过期、AGENTS.md 与 docs 冲突、需要清理项目 AI 记忆时也应使用。
   裸的"整理"或"tidy"只有在存在明确开发上下文且用户是在结束一个阶段时才触发。
   新增或更新项目文档默认使用中文。
+disable-model-invocation: true
 ---
 
 # Knowledge Sync
@@ -26,13 +27,11 @@ description: >
 
 **必须先理解这件事，否则你会只改 `AGENTS.md` 就结束，把下游同事和其他 AI 工具晾在那儿。**
 
-
 | 位置                       | 受众                              | 职责                        | 不同步的代价              |
 | ------------------------ | ------------------------------- | ------------------------- | ------------------- |
 | 项目根 `AGENTS.md`          | Cursor、VSCode Copilot 等通用 AI 助手 | 项目事实、协作规则、代码风格、运行命令、红线    | 不同 AI 对项目理解不一致      |
 | `.cursor/rules/`         | Cursor 专用                       | Cursor 特有规则、文件级约束、工具使用偏好  | Cursor 内行为无法稳定复用    |
 | 项目 `docs/` + `README.md` | **其他人**（人类同事、下游开发者、未来接手的 AI）    | 接入指南、架构图、运维手册、交接说明、API 参考 | **其他人或系统无法正确接入或运维** |
-
 
 这几层**受众不同，职责不重叠**。`AGENTS.md` 里写"新增了 device flow 五个路由" ≠ `docs/integration-guide.md` 里"下游怎么接这套 flow" —— 前者是提醒 AI，后者是教别人。**两份都要写。**
 
@@ -56,7 +55,7 @@ description: >
 如果这个仓库本身存在以下文件，也要把它们视作这套方法的一部分：
 
 - `SKILL.md`：主流程源码，作为这套方法的单一真相来源
-- `.cursor/skills/knowledge-sync/SKILL.md`：Cursor 的标准 skill 入口
+- `.cursor/skills/myai/SKILL.md`：Cursor 的标准 skill 入口
 - `README.md`：仓库入口说明，告诉人和 AI 这套工作流怎么用
 - `.cursor/rules/myai-core.mdc`：`alwaysApply` 的基础行为规则，约束日常编码时的默认行为
 - `.github/copilot-instructions.md`：VSCode Copilot 的默认行为规则，和 Cursor 规则共享同一套核心原则
@@ -192,7 +191,7 @@ API 速查表、环境变量表、术语表是高频查询的结构化信息，*
 
 在所有文件修改完之后（不是之前），给用户简洁摘要：
 
-```
+```text
 ## 同步完成
 
 ### AGENTS.md 变更
@@ -237,4 +236,3 @@ API 速查表、环境变量表、术语表是高频查询的结构化信息，*
 - **[references/examples.md](references/examples.md)** — `AGENTS.md` 条目、坏示例、摘要模板与冲突处理示例
 - **[README.md](README.md)** — 这套仓库的定位、组成和推荐工作流
 - **[.github/prompts/myai.prompt.md](.github/prompts/myai.prompt.md)** — VSCode Copilot 的 `/myai` prompt file
-
